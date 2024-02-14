@@ -23,9 +23,10 @@ contract UmamiHandler is ICallbackReceiver {
         IGMETH(GMWETH).depositWithCallback{value: msg.value}(wethBalance, 0, address(this), address(this));
     }
 
-    function afterDepositExecution(uint256 key, bool sucess, OCRequest memory request) external {
+    function afterDepositExecution(uint256 key, bool success, OCRequest memory request) external {
         require(msg.sender == REQUEST_HANDLER);
         require(request.sender == address(this));
+        require(success);
         uint256 gmWethBalance = IERC20(GMWETH).balanceOf(address(this));
         IERC20(GMWETH).approve(MASTER_CHEF_UMAMI, gmWethBalance);
         IMasterChefUmami(MASTER_CHEF_UMAMI).deposit(
