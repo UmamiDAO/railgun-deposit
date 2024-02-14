@@ -14,5 +14,5 @@ interface ICallbackReceiver {
         uint256 requestBlock;
     }
 
-    function afterDepositExecution(uint256 key, bool sucess, OCRequest memory request) external;
+    function afterDepositExecution(uint256 key, bool success, OCRequest memory request) external;
 }
