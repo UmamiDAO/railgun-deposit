@@ -2,7 +2,6 @@
 pragma solidity 0.8.17;
 
 interface ICallbackReceiver {
-
     /// @dev open close request
     struct OCRequest {
         address sender;
